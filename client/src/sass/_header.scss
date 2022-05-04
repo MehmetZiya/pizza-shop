@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Ultra&display=swap');
+
+header {
+  nav {
+    .headerLogo {
+      display: flex;
+      align-items: center;
+      img {
+        width: 80px;
+        height: auto;
+      }
+      .brand1 {
+        font-family: 'Ultra', sans-serif;
+        font-size: 1.5rem;
+        color: $green;
+        margin-right: 10px;
+      }
+      .brand2 {
+        font-family: 'Ultra', sans-serif;
+        font-size: 1.5rem;
+        color: $red;
+      }
+    }
+  }
+}
