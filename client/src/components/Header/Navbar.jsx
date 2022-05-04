@@ -4,13 +4,15 @@ const Navbar = () => {
   return (
     <nav>
       <div className='menu'>
-        <NavLink to='/'>
-          <div className='headerLogo'>
+        <div className='headerLogo'>
+          <NavLink to='/'>
             <img src={logo} alt='vp-logo' />
-            <span className='brand1'>VALENTINO</span>
-            <span className='brand2'>PIZZERIA</span>
-          </div>
-        </NavLink>
+          </NavLink>
+          <span className='brand1'>VALENTINO</span>
+          <br />
+          <span className='brand2'>PIZZERIA</span>
+        </div>
+
         <NavLink to='/login'>Login</NavLink>
       </div>
 
