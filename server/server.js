@@ -5,6 +5,7 @@ import connectDB from './config/db.js'
 
 //routes
 import pizzaRoutes from './routes/pizzaRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 
 dotenv.config()
 connectDB()
@@ -14,6 +15,7 @@ const app = express()
 app.use(express.json())
 
 app.use('/api/pizzas', pizzaRoutes)
+app.use('/api/users', userRoutes)
 
 const PORT = process.env.PORT
 
