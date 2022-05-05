@@ -3,7 +3,7 @@ import Header from './components/Header/Header'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
-
+import './bootstrap.min.css'
 import './sass/App.scss'
 
 function App() {

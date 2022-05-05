@@ -45,7 +45,6 @@ const Register = () => {
     <div className='loginPage'>
       {loading && <div>Loading...</div>}
       {error && <div>Error</div>}
-      <h2>SIGN UP</h2>
       <img src={logo} alt='logo' />
       {success && <Message variant='success'>{successMessage}</Message>}
       {message && <Message variant='danger'>{message}</Message>}

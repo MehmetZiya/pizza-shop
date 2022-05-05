@@ -28,7 +28,6 @@ const Login = () => {
     <div className='loginPage'>
       {loading && <div>Loading...</div>}
       {error && <div>Error</div>}
-      <h2>SIGN IN</h2>
       <img src={logo} alt='logo' />
       <form onSubmit={handleLogin}>
         <input
@@ -49,7 +48,7 @@ const Login = () => {
           required
         />
         <button className='btn' type='submit'>
-          LOGIN
+          LOGGA IN
         </button>
       </form>
       <p>

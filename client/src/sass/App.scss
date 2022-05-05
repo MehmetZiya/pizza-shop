@@ -9,6 +9,7 @@
 //components
 @import 'header';
 //pages
+@import 'homePage';
 @import 'loginPage';
 
 html {
@@ -17,7 +18,7 @@ html {
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Lato', sans-serif !important;
   margin: 0;
 }
 
@@ -33,7 +34,7 @@ body {
     border: none;
     border-radius: 5px;
     padding: 10px;
-
+    margin: 1rem;
     background-color: $red;
     color: #fff;
     cursor: pointer;
