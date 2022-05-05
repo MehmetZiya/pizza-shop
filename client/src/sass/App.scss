@@ -9,6 +9,7 @@
 //components
 @import 'header';
 //pages
+@import 'loginPage';
 
 html {
   scroll-behavior: smooth;
@@ -27,5 +28,19 @@ body {
 
   a {
     text-decoration: none;
+  }
+  .btn {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+
+    background-color: $red;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background-color: $green;
+      color: #fafafa;
+    }
   }
 }
