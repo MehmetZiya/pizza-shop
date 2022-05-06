@@ -61,3 +61,38 @@ export const deletePizza = (pizzaId) => async () => {
     console.log(error)
   }
 }
+
+export const searchPizzas = (searchKey, category) => async (dispatch) => {
+  dispatch({ type: PIZZA_LIST_REQUEST })
+  console.log(searchKey)
+  try {
+    const { data } = await axios.get(`/api/pizzas`)
+    let filteredPizzas
+    if (category === 'all' && searchKey === '') {
+      filteredPizzas = data
+    }
+    if (category === 'all' && searchKey) {
+      filteredPizzas = data.filter((pizza) =>
+        pizza.name.toLowerCase().includes(searchKey.toLowerCase())
+      )
+    } else if (category !== 'all') {
+      filteredPizzas = data
+        .filter((pizza) =>
+          pizza.name.toLowerCase().includes(searchKey.toLowerCase())
+        )
+        .filter(
+          (pizza) => pizza.category.toLowerCase() === category.toLowerCase()
+        )
+    }
+    dispatch({ type: PIZZA_LIST_SUCCESS, payload: filteredPizzas })
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    dispatch({
+      type: PIZZA_LIST_FAIL,
+      payload: message,
+    })
+  }
+}

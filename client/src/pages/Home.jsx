@@ -1,7 +1,10 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllPizza } from '../actions/pizzaActions'
+import Loader from '../components/Loader'
 import PizzaCard from '../components/Main/PizzaCard'
+import Search from '../components/Main/Search'
+import Message from '../components/Message'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -13,11 +16,19 @@ const Home = () => {
   }, [dispatch])
 
   return (
-    <div className='homePage'>
-      {loading && <div>Loading...</div>}
-      {error && <div>Error! {error.message}</div>}
-      {pizzas &&
-        pizzas.map((pizza) => <PizzaCard key={pizza._id} pizza={pizza} />)}
+    <div className='home'>
+      <Search />
+      {loading && <Loader />}
+      {error && <Message variant='danger'>{error}</Message>}
+      {pizzas.length === 0 && (
+        <div className='container'>
+          <Message variant='danger'>No pizzas found</Message>
+        </div>
+      )}
+      <div className='homePage'>
+        {pizzas &&
+          pizzas.map((pizza) => <PizzaCard key={pizza._id} pizza={pizza} />)}
+      </div>
     </div>
   )
 }
