@@ -1,0 +1,19 @@
+.adminPage {
+  h2 {
+    color: $green;
+  }
+  .adminLinks {
+    display: flex;
+    justify-content: space-around;
+    li {
+      a {
+        font-size: 18px;
+        font-weight: 600;
+        color: $red !important;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -1,9 +1,9 @@
 import { Link, Routes, Route, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-/* import UserList from '../components/adminScreens/UserList'
-import PizzaList from '../components/adminScreens/PizzaList' */
 import AddNewPizza from '../components/adminScreens/AddNewPizza'
+import PizzaList from '../components/adminScreens/PizzaList'
+import UserList from '../components/adminScreens/UserList'
 /* import OrderList from '../components/adminScreens/OrderList'
 import EditPizza from '../components/adminScreens/EditPizza' */
 const AdminPanel = () => {
@@ -16,10 +16,10 @@ const AdminPanel = () => {
   }, [userInfo])
 
   return (
-    <div style={{ marginTop: '200px' }} className='container'>
+    <div style={{ marginTop: '200px' }} className='container adminPage'>
       <h2 className='text-center'>ADMIN PANEL</h2>
       <hr />
-      <ul className='adminFunctions'>
+      <ul className='adminLinks'>
         <li>
           <Link to='/admin/orderList'>Order List</Link>
         </li>
@@ -33,10 +33,11 @@ const AdminPanel = () => {
           <Link to='/admin/addNewPizza'>Add New Pizza</Link>
         </li>
       </ul>
+      <hr />
       <Routes>
         <Route path='/' element={<Navigate to='orderList' />} />
-        {/* <Route path='userList' element={<UserList />} />
-        <Route path='pizzaList' element={<PizzaList />} /> */}
+        <Route path='userList' element={<UserList />} />
+        <Route path='pizzaList' element={<PizzaList />} />
         <Route path='addNewPizza' element={<AddNewPizza />} />
         {/* <Route path='orderList' element={<OrderList />} />
         <Route path='editpizza/:pizzaId' element={<EditPizza />} /> */}
