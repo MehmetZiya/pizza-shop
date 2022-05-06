@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import { pizzaListReducer } from './reducers/pizzaReducers'
+import { addPizzaReducer, pizzaListReducer } from './reducers/pizzaReducers'
 import { userLoginReducer, userRegisterReducer } from './reducers/userReducers'
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
@@ -18,6 +18,7 @@ const initialState = {
 export default configureStore({
   reducer: {
     pizzaList: pizzaListReducer,
+    addPizza: addPizzaReducer,
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
   },

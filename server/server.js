@@ -6,6 +6,8 @@ import connectDB from './config/db.js'
 //routes
 import pizzaRoutes from './routes/pizzaRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import uploadRoutes from './routes/uploadRoutes.js'
+import { errorHandler, notFound } from './middlewares/errorMiddleware.js'
 
 dotenv.config()
 connectDB()
@@ -16,7 +18,10 @@ app.use(express.json())
 
 app.use('/api/pizzas', pizzaRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/upload', uploadRoutes)
 
+app.use(notFound)
+app.use(errorHandler)
 const PORT = process.env.PORT
 
 app.listen(
