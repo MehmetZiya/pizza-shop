@@ -13,7 +13,7 @@ const Navbars = () => {
     dispatch(logoutUser())
   }
   return (
-    <Navbar expand='md' collapseOnSelect align-items-center>
+    <Navbar expand='md' collapseOnSelect className='p-2'>
       <LinkContainer to='/'>
         <Navbar.Brand className='brand'>
           <img src={logo} alt='logo' />
