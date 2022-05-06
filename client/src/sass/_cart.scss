@@ -1,3 +1,50 @@
 .cartPage {
   margin-top: 150px;
+  padding: 1rem 100px;
+  h2 {
+    color: $red;
+  }
+  h3 {
+    color: $green;
+  }
+  .cartItems {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .cartDetails {
+      min-width: 700px;
+      .cartItem {
+        display: grid;
+        grid-template-columns: 5fr 2fr 1fr;
+        grid-column-gap: 10px;
+        justify-items: center;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid $red;
+        .itemText {
+          width: 100%;
+        }
+        .plusIcon {
+          color: $green;
+          font-size: 22px;
+          cursor: pointer;
+          margin-left: 1rem;
+        }
+        .minusIcon {
+          color: $red;
+          font-size: 22px;
+          margin-right: 1rem;
+          cursor: pointer;
+        }
+        .trashIcon {
+          color: $red;
+          font-size: 22px;
+          cursor: pointer;
+        }
+      }
+    }
+    .cartCheckout {
+      margin-top: 2rem;
+    }
+  }
 }

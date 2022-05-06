@@ -1,10 +1,17 @@
 import { useState } from 'react'
 import ModalDetails from '../ModalDetails'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../actions/cartActions'
 
 const PizzaCard = ({ pizza }) => {
   const [qty, setQty] = useState(1)
-  const [variant, setVariant] = useState('normal')
+  const [variant, setVariant] = useState('Normal')
   const [modalShow, setModalShow] = useState(false)
+
+  const dispatch = useDispatch()
+  const addToCartHandler = () => {
+    dispatch(addToCart(pizza, qty, variant))
+  }
   return (
     <div className='pizzaCard'>
       <div className='pizzaImg' onClick={() => setModalShow(true)}>
@@ -49,15 +56,12 @@ const PizzaCard = ({ pizza }) => {
 
       <div className='flex-container mt-1'>
         <div className='mt-2 w-100'>
-          <h3>
-            Price :
-            {variant === 'normal'
-              ? `${pizza.normalPrice * qty} kr`
-              : `${pizza.familjPrice * qty} kr `}
-          </h3>
+          <h3>Price :{pizza.prices[0][variant] * qty} kr</h3>
         </div>
         <div className='btngroup'>
-          <button className='btn btn-danger'>ADD TO CART</button>
+          <button className='btn btn-danger' onClick={addToCartHandler}>
+            ADD TO CART
+          </button>
         </div>
       </div>
       <ModalDetails

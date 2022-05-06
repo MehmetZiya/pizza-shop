@@ -14,15 +14,14 @@ const getPizzaList = asyncHandler(async (req, res) => {
 // @access  Admin
 const addPizza = asyncHandler(async (req, res) => {
   const pizza = req.body
-  const { name, image, category, description, normalPrice, familjPrice } = pizza
+  const { name, image, category, description } = pizza
   try {
     const newPizza = new Pizza({
       name,
       description,
       category,
-      variants: ['normal', 'familj'],
-      normalPrice,
-      familjPrice,
+      variants: ['Normal', 'Familj'],
+      prices: [pizza.prices],
       image,
     })
     await newPizza.save()

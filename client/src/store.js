@@ -2,17 +2,19 @@ import { configureStore } from '@reduxjs/toolkit'
 
 import { addPizzaReducer, pizzaListReducer } from './reducers/pizzaReducers'
 import { userLoginReducer, userRegisterReducer } from './reducers/userReducers'
+import { cartReducer } from './reducers/cartReducers'
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
   ? JSON.parse(localStorage.getItem('userInfo'))
   : null
 
-/* const cartItemsFromStorage = localStorage.getItem('cartItems')
+const cartItemsFromStorage = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))
-  : [] */
+  : []
 
 const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
+  cart: { cartItems: cartItemsFromStorage },
 }
 
 export default configureStore({
@@ -21,6 +23,7 @@ export default configureStore({
     addPizza: addPizzaReducer,
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
+    cart: cartReducer,
   },
   preloadedState: initialState,
 })
