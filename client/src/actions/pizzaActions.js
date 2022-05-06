@@ -3,6 +3,9 @@ import {
   ADD_PIZZA_FAIL,
   ADD_PIZZA_REQUEST,
   ADD_PIZZA_SUCCESS,
+  EDIT_PIZZA_FAIL,
+  EDIT_PIZZA_REQUEST,
+  EDIT_PIZZA_SUCCESS,
   PIZZA_LIST_FAIL,
   PIZZA_LIST_REQUEST,
   PIZZA_LIST_SUCCESS,
@@ -32,5 +35,29 @@ export const addPizza = (pizza) => async (dispatch) => {
     dispatch({ type: ADD_PIZZA_SUCCESS, payload: data })
   } catch (error) {
     dispatch({ type: ADD_PIZZA_FAIL, payload: error.message })
+  }
+}
+
+export const editPizza = (editedpizza) => async (dispatch) => {
+  try {
+    dispatch({ type: EDIT_PIZZA_REQUEST })
+
+    await axios.post('/api/pizzas/editpizza', { editedpizza })
+
+    dispatch({ type: EDIT_PIZZA_SUCCESS })
+  } catch (error) {
+    dispatch({ type: EDIT_PIZZA_FAIL, payload: error })
+  }
+}
+
+export const deletePizza = (pizzaId) => async () => {
+  try {
+    await axios.post('/api/pizzas/deletepizza', { pizzaId })
+
+    alert('Pizza Deleted Successfully!!')
+    window.location.reload()
+  } catch (error) {
+    alert('Something went Wrong')
+    console.log(error)
   }
 }

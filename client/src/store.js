@@ -1,7 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import { addPizzaReducer, pizzaListReducer } from './reducers/pizzaReducers'
-import { userLoginReducer, userRegisterReducer } from './reducers/userReducers'
+import {
+  getAllUsersReducer,
+  userLoginReducer,
+  userRegisterReducer,
+} from './reducers/userReducers'
 import { cartReducer } from './reducers/cartReducers'
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
@@ -23,6 +27,7 @@ export default configureStore({
     addPizza: addPizzaReducer,
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
+    getAllUsersState: getAllUsersReducer,
     cart: cartReducer,
   },
   preloadedState: initialState,

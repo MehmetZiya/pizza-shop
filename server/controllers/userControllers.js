@@ -64,4 +64,37 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 })
 
-export { authUser, registerUser }
+// @desc    Get All users
+// @route   GET /api/users
+// @access  Private Admin
+const getAllUser = asyncHandler(async (req, res) => {
+  try {
+    const users = await User.find()
+
+    res.status(200).json(users)
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: err.message,
+    })
+  }
+})
+
+// @desc    Delete a user
+// @route   POST /api/users
+// @access  Private Admin
+const deleteUser = asyncHandler(async (req, res) => {
+  const userId = req.body._id
+  try {
+    await User.findByIdAndDelete({ _id: userId })
+
+    res.status(200).json('User delted successfully')
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: err.message,
+    })
+  }
+})
+
+export { authUser, registerUser, getAllUser, deleteUser }
