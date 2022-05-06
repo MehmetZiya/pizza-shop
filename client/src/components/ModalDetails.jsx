@@ -22,7 +22,7 @@ const ModalDetails = (props) => {
               src={props.pizza.image}
               alt={props.pizza.name}
               className='img-fluid mx-auto d-block'
-              style={{ height: '300px', width: '300px' }}
+              style={{ height: 'auto', width: '300px' }}
             />
           </Col>
           <Col>

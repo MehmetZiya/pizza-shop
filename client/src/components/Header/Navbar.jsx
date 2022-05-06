@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logoutUser } from '../../actions/userActions'
 
 const Navbars = () => {
+  const cartState = useSelector((state) => state.cart)
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
   const dispatch = useDispatch()
@@ -45,13 +46,18 @@ const Navbars = () => {
               </NavDropdown.Item>
             </NavDropdown>
           ) : (
-            <LinkContainer to='/login'>
+            <LinkContainer to='/login' className='navLink'>
               <Nav.Link>Sign In</Nav.Link>
             </LinkContainer>
           )}
           <LinkContainer to='/cart'>
             <Nav.Link>
               <BsFillCartFill className='cartIcon' />
+              {cartState.cartItems.length > 0 && (
+                <span className='cartItemLength'>
+                  {cartState.cartItems.length}
+                </span>
+              )}
             </Nav.Link>
           </LinkContainer>
         </Nav>

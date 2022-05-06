@@ -19,7 +19,7 @@ const AddNewPizza = () => {
   const [image, setImage] = useState('')
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
-
+  const categories = ['Standard', 'Special', 'Vegetarian', 'Italieniska']
   useEffect(() => {
     if (success) {
       document.querySelector('form').reset()
@@ -54,12 +54,14 @@ const AddNewPizza = () => {
     const pizza = {
       name,
       description,
-      normalPrice: Number(smallPrice),
-      familjPrice: Number(familjPrice),
+      prices: {
+        Normal: Number(smallPrice),
+        Familj: Number(familjPrice),
+      },
       category,
       image,
     }
-
+    console.log(pizza)
     dispatch(addPizza(pizza))
   }
 
@@ -71,7 +73,7 @@ const AddNewPizza = () => {
         {!loading && success && (
           <Message variant='success'>{'Pizza added successfully'}</Message>
         )}
-        <h1>Add Pizza</h1>
+        <h3>Add Pizza Form</h3>
         <form onSubmit={(e) => onSubmit(e)}>
           <div className='form-group'>
             <input
@@ -109,14 +111,28 @@ const AddNewPizza = () => {
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-          <div className='form-group'>
-            <input
+          <div className='form-group p-2'>
+            Category:
+            <select
+              name='variant'
+              value={category}
+              onChange={(e) => {
+                setCategory(e.target.value)
+              }}
+            >
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+            {/*  <input
               type='text'
               className='form-control'
               placeholder='Category'
               onChange={(e) => setCategory(e.target.value)}
               required
-            />
+            /> */}
           </div>
           <div className='form-group d-flex'>
             <input

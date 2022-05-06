@@ -17,9 +17,7 @@ const AdminPanel = () => {
 
   return (
     <div style={{ marginTop: '200px' }} className='container'>
-      <h2 className='text-center' style={{ fontSize: '35px' }}>
-        ADMIN PANEL
-      </h2>
+      <h2 className='text-center'>ADMIN PANEL</h2>
       <hr />
       <ul className='adminFunctions'>
         <li>

@@ -1,4 +1,7 @@
 .homePage {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   margin-top: 150px;
-  padding: 0 3rem;
+  padding: 0 150px;
 }
