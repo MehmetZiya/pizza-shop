@@ -26,8 +26,8 @@
   .pizzaSelection {
     display: flex;
     width: 100%;
-    margin-top: 1rem;
-    justify-content: space-around;
+    margin: 1rem;
+    justify-content: center;
     .pizzaStorlek,
     .pizzaQuantity {
       text-align: center;
@@ -39,6 +39,7 @@
         border-radius: 5px;
         width: 90px;
         padding: 6px;
+        margin: 0.5rem;
         cursor: pointer;
       }
     }
