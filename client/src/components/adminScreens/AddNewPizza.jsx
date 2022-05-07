@@ -18,7 +18,7 @@ const AddNewPizza = () => {
   const [familjPrice, setFamiljPrice] = useState()
   const [image, setImage] = useState('')
   const [description, setDescription] = useState('')
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState('Standard')
   const categories = ['Standard', 'Special', 'Vegetarian', 'Italieniska']
   useEffect(() => {
     if (success) {
@@ -126,13 +126,6 @@ const AddNewPizza = () => {
                 </option>
               ))}
             </select>
-            {/*  <input
-              type='text'
-              className='form-control'
-              placeholder='Category'
-              onChange={(e) => setCategory(e.target.value)}
-              required
-            /> */}
           </div>
           <div className='form-group d-flex'>
             <input

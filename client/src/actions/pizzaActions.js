@@ -6,6 +6,9 @@ import {
   EDIT_PIZZA_FAIL,
   EDIT_PIZZA_REQUEST,
   EDIT_PIZZA_SUCCESS,
+  GET_PIZZA_BY_ID_FAIL,
+  GET_PIZZA_BY_ID_REQUEST,
+  GET_PIZZA_BY_ID_SUCCESS,
   PIZZA_LIST_FAIL,
   PIZZA_LIST_REQUEST,
   PIZZA_LIST_SUCCESS,
@@ -64,7 +67,7 @@ export const deletePizza = (pizzaId) => async () => {
 
 export const searchPizzas = (searchKey, category) => async (dispatch) => {
   dispatch({ type: PIZZA_LIST_REQUEST })
-  console.log(searchKey)
+
   try {
     const { data } = await axios.get(`/api/pizzas`)
     let filteredPizzas
@@ -94,5 +97,17 @@ export const searchPizzas = (searchKey, category) => async (dispatch) => {
       type: PIZZA_LIST_FAIL,
       payload: message,
     })
+  }
+}
+
+export const getPizzaByID = (pizzaid) => async (dispatch) => {
+  try {
+    dispatch({ type: GET_PIZZA_BY_ID_REQUEST })
+
+    const { data } = await axios.post('/api/pizzas/getpizzabyid', { pizzaid })
+
+    dispatch({ type: GET_PIZZA_BY_ID_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({ type: GET_PIZZA_BY_ID_FAIL, payload: error })
   }
 }

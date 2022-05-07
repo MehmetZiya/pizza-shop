@@ -1,5 +1,5 @@
 .home {
-  margin-top: 150px;
+  margin-top: 110px;
   .searchBar {
     display: flex;
     justify-content: space-around;
@@ -23,6 +23,11 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 0 150px;
+    padding: 0 100px;
+  }
+  .first-slide {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
   }
 }

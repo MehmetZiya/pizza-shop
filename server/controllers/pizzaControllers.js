@@ -34,4 +34,58 @@ const addPizza = asyncHandler(async (req, res) => {
   }
 })
 
-export { getPizzaList, addPizza }
+// @desc    Get pizza by ID
+// @route   POST /api/pizzas/getpizzabyid
+// @access  Admin
+const getPizzaById = asyncHandler(async (req, res) => {
+  try {
+    const pizzaId = req.body.pizzaid
+    const pizza = await Pizza.findById(pizzaId)
+    res.json(pizza)
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    })
+  }
+})
+
+// @desc    Update Pizza
+// @route   POST /api/pizzas/editpizza
+// @access  Admin
+const editPizza = asyncHandler(async (req, res) => {
+  const editedPizza = req.body.editedpizza
+
+  try {
+    const pizza = await Pizza.findOne({ _id: editedPizza._id })
+    pizza.name = editedPizza.name
+    pizza.image = editedPizza.image
+    pizza.category = editedPizza.category
+    pizza.description = editedPizza.description
+    pizza.prices = [editedPizza.prices]
+    pizza.varients = editedPizza.varients
+    await pizza.save()
+    res.json(pizza)
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    })
+  }
+})
+
+// @desc    Delete Pizza
+// @route   POST /api/pizzas/editpizza
+// @access  Admin
+const deletePizza = asyncHandler(async (req, res) => {
+  try {
+    const pizzaid = req.body.pizzaid
+
+    const deletedPizza = await Pizza.findOneAndDelete({ _id: pizzaid })
+
+    res.send(deletedPizza)
+  } catch (error) {
+    res.status(400).json({ message: error })
+  }
+})
+export { getPizzaList, addPizza, getPizzaById, editPizza, deletePizza }

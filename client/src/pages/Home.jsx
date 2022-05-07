@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllPizza } from '../actions/pizzaActions'
 import Loader from '../components/Loader'
+import HomeCarousel from '../components/Main/HomeCarousel'
 import PizzaCard from '../components/Main/PizzaCard'
 import Search from '../components/Main/Search'
 import Message from '../components/Message'
@@ -17,6 +18,7 @@ const Home = () => {
 
   return (
     <div className='home'>
+      <HomeCarousel />
       <Search />
       {loading && <Loader />}
       {error && <Message variant='danger'>{error}</Message>}

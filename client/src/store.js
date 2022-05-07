@@ -1,6 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import { addPizzaReducer, pizzaListReducer } from './reducers/pizzaReducers'
+import {
+  addPizzaReducer,
+  pizzaListReducer,
+  getPizzaByIDReducer,
+  editPizzaReducer,
+} from './reducers/pizzaReducers'
 import {
   getAllUsersReducer,
   userLoginReducer,
@@ -25,6 +30,8 @@ export default configureStore({
   reducer: {
     pizzaList: pizzaListReducer,
     addPizza: addPizzaReducer,
+    getPizzaByID: getPizzaByIDReducer,
+    editPizza: editPizzaReducer,
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
     getAllUsersState: getAllUsersReducer,
