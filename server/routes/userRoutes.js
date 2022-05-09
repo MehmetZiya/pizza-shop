@@ -5,12 +5,13 @@ import {
   deleteUser,
   getAllUser,
 } from '../controllers/userControllers.js'
+import { protect, admin } from '../middlewares/authMiddleware.js'
 
 const router = express.Router()
 
 router.route('/register').post(registerUser)
 router.post('/login', authUser)
-router.post('/deleteUser', deleteUser)
-router.get('/getAllUsers', getAllUser)
+router.post('/deleteUser', protect, admin, deleteUser)
+router.get('/getAllUsers', protect, admin, getAllUser)
 
 export default router

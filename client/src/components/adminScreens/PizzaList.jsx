@@ -10,7 +10,11 @@ const PizzaList = () => {
   const dispatch = useDispatch()
   const pizzaListStore = useSelector((state) => state.pizzaList)
   const { loading, error, pizzas } = pizzaListStore
-
+  const deleteHandler = (id) => {
+    if (window.confirm('Are you sure')) {
+      dispatch(deletePizza(id))
+    }
+  }
   useEffect(() => {
     dispatch(getAllPizza())
   }, [dispatch])
@@ -50,7 +54,7 @@ const PizzaList = () => {
                       }}
                       className='mr-2'
                       onClick={() => {
-                        dispatch(deletePizza({ _id: pizza._id }))
+                        deleteHandler(pizza._id)
                       }}
                     />
 

@@ -15,6 +15,7 @@ import Cancel from './pages/Cancel'
 import './bootstrap.min.css'
 import './sass/App.scss'
 import Orders from './pages/Orders'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
@@ -22,16 +23,18 @@ function App() {
       <BrowserRouter>
         <Header />
         <main>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/cart' element={<Cart />} />
-            <Route path='/orders' element={<Orders />} />
-            <Route path='/success' element={<Success />} />
-            <Route path='/cancel' element={<Cancel />} />
-            <Route path='/admin/*' element={<AdminPanel />} />
-          </Routes>
+          <ScrollToTop>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/cart' element={<Cart />} />
+              <Route path='/orders' element={<Orders />} />
+              <Route path='/success' element={<Success />} />
+              <Route path='/cancel' element={<Cancel />} />
+              <Route path='/admin/*' element={<AdminPanel />} />
+            </Routes>
+          </ScrollToTop>
         </main>
         <Footer />
       </BrowserRouter>

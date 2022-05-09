@@ -23,7 +23,7 @@ const UserList = () => {
     <div>
       <h2>Users List</h2>
       {loading && <Loader />}
-      {error && <Message message={error} />}
+      {error && <Message variant='danger' message={error.message} />}
       <table className='table table-striped table-bordered table-responsive-sm '>
         <thead className='table-dark'>
           <tr>

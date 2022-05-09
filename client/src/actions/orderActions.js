@@ -12,6 +12,7 @@ import {
 } from '../constants/orderConstants'
 
 export const placeOrder = (user, cartItems) => async (dispatch, getState) => {
+  const currentUser = getState().userLogin.userInfo
   let order = {
     name: user.name,
     email: user.email,
@@ -21,7 +22,12 @@ export const placeOrder = (user, cartItems) => async (dispatch, getState) => {
   }
   dispatch({ type: PLACE_ORDER_REQUEST })
   try {
-    const response = await axios.post('/api/orders/placeOrder', order)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${currentUser.token}`,
+      },
+    }
+    const response = await axios.post('/api/orders/placeOrder', order, config)
     dispatch({ type: PLACE_ORDER_SUCCESS, payload: response.data })
   } catch (error) {
     dispatch({ type: PLACE_ORDER_FAIL, payload: error.response.data.message })
@@ -32,28 +38,49 @@ export const getUserOrders = () => async (dispatch, getState) => {
   const currentUser = getState().userLogin.userInfo
   dispatch({ type: GET_USER_ORDERS_REQUEST })
   try {
-    const { data } = await axios.post(`/api/orders/getUserOrders`, {
-      userId: currentUser._id,
-    })
+    const config = {
+      headers: {
+        Authorization: `Bearer ${currentUser.token}`,
+      },
+    }
+    const { data } = await axios.post(
+      `/api/orders/getUserOrders`,
+      {
+        userId: currentUser._id,
+      },
+      config
+    )
     dispatch({ type: GET_USER_ORDERS_SUCCESS, payload: data })
   } catch (error) {
     dispatch({ type: GET_USER_ORDERS_FAILED, payload: error.message })
   }
 }
 
-export const getAllOrders = () => async (dispatch) => {
+export const getAllOrders = () => async (dispatch, getState) => {
   dispatch({ type: GET_ALL_ORDERS_REQUEST })
+  const currentUser = getState().userLogin.userInfo
   try {
-    const { data } = await axios.get(`/api/orders/getAllOrders`)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${currentUser.token}`,
+      },
+    }
+    const { data } = await axios.get(`/api/orders/getAllOrders`, config)
     dispatch({ type: GET_ALL_ORDERS_SUCCESS, payload: data })
   } catch (error) {
     dispatch({ type: GET_ALL_ORDERS_FAILED, payload: error.message })
   }
 }
 
-export const prepareOrder = (orderid) => async (dispatch) => {
+export const prepareOrder = (orderid) => async (dispatch, getState) => {
+  const currentUser = getState().userLogin.userInfo
   try {
-    await axios.post('/api/orders/prepareOrder', { orderid })
+    const config = {
+      headers: {
+        Authorization: `Bearer ${currentUser.token}`,
+      },
+    }
+    await axios.post('/api/orders/prepareOrder', { orderid }, config)
     const orders = await axios.get('/api/orders/getAllOrders')
     dispatch({ type: GET_ALL_ORDERS_SUCCESS, payload: orders.data })
   } catch (error) {
@@ -62,9 +89,15 @@ export const prepareOrder = (orderid) => async (dispatch) => {
   }
 }
 
-export const deliverOrder = (orderid) => async (dispatch) => {
+export const deliverOrder = (orderid) => async (dispatch, getState) => {
+  const currentUser = getState().userLogin.userInfo
   try {
-    await axios.post('/api/orders/deliverOrder', { orderid })
+    const config = {
+      headers: {
+        Authorization: `Bearer ${currentUser.token}`,
+      },
+    }
+    await axios.post('/api/orders/deliverOrder', { orderid }, config)
     alert('Order Delivered')
     const orders = await axios.get('/api/orders/getAllOrders')
     dispatch({ type: GET_ALL_ORDERS_SUCCESS, payload: orders.data })

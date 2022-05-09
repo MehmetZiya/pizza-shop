@@ -10,6 +10,7 @@ import {
   GET_ALL_USERS_SUCCESS,
   GET_ALL_USERS_FAILED,
   GET_ALL_USERS_REQUEST,
+  USER_DELETE_REQUEST,
 } from '../constants/userConstants'
 
 export const loginUser = (email, password) => async (dispatch) => {
@@ -88,11 +89,13 @@ export const logoutUser = () => (dispatch) => {
   dispatch({ type: USER_LOGOUT })
 }
 
-export const getAllUsers = () => async (dispatch) => {
+export const getAllUsers = () => async (dispatch, getState) => {
+  dispatch({ type: GET_ALL_USERS_REQUEST })
+  const currentUser = getState().userLogin.userInfo
   try {
-    dispatch({ type: GET_ALL_USERS_REQUEST })
+    const config = { headers: { Authorization: `Bearer ${currentUser.token}` } }
 
-    const { data } = await axios.get('/api/users/getAllUsers')
+    const { data } = await axios.get('/api/users/getAllUsers', config)
 
     dispatch({ type: GET_ALL_USERS_SUCCESS, payload: data })
   } catch (error) {
@@ -100,9 +103,12 @@ export const getAllUsers = () => async (dispatch) => {
   }
 }
 
-export const deleteUser = (userId) => async () => {
+export const deleteUser = (userId) => async (dispatch, getState) => {
+  dispatch({ type: USER_DELETE_REQUEST })
+  const currentUser = getState().userLogin.userInfo
   try {
-    await axios.post('/api/users/deleteUser', { _id: userId })
+    const config = { headers: { Authorization: `Bearer ${currentUser.token}` } }
+    await axios.post('/api/users/deleteUser', { _id: userId }, config)
 
     alert('User Deleted Successfully!!')
   } catch (error) {

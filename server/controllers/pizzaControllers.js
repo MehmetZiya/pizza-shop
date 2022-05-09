@@ -79,9 +79,9 @@ const editPizza = asyncHandler(async (req, res) => {
 // @access  Admin
 const deletePizza = asyncHandler(async (req, res) => {
   try {
-    const pizzaid = req.body.pizzaid
+    const pizzaId = req.body.pizzaId
 
-    const deletedPizza = await Pizza.findOneAndDelete({ _id: pizzaid })
+    const deletedPizza = await Pizza.findOneAndDelete({ _id: pizzaId })
 
     res.send(deletedPizza)
   } catch (error) {

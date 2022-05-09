@@ -10,7 +10,10 @@ const Footer = () => {
   return (
     <footer>
       <p className='footerInfo'>
-        &copy;Copyright 2022 | Valentino All Rights Reserved | Powered by{' '}
+        &copy;Copyright 2022 | Valentino All Rights Reserved
+      </p>
+      <p className='footerInfo2'>
+        Powered by{' '}
         <a
           href='https://www.linkedin.com/in/mzyazgan/'
           target='_blank'

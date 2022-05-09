@@ -26,7 +26,7 @@ const OrderList = () => {
   }
   return (
     <div>
-      <h1>OrderList</h1>
+      <h2>OrderList</h2>
       {loading && <Loader />}
       {error && <Message variant='danger'>{error}</Message>}
       <table className='table table-striped table-bordered table-responsive-sm'>

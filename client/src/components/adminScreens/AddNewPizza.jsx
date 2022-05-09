@@ -86,7 +86,7 @@ const AddNewPizza = () => {
           </div>
           <div className='form-group'>
             <input
-              type='text'
+              type='number'
               className='form-control'
               placeholder='Normal Price'
               onChange={(e) => setSmallPrice(e.target.value)}
@@ -95,7 +95,7 @@ const AddNewPizza = () => {
           </div>
           <div className='form-group'>
             <input
-              type='text'
+              type='number'
               className='form-control'
               placeholder='Familj Price'
               onChange={(e) => setFamiljPrice(e.target.value)}

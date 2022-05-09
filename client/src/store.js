@@ -5,6 +5,7 @@ import {
   pizzaListReducer,
   getPizzaByIDReducer,
   editPizzaReducer,
+  deletePizzaReducer,
 } from './reducers/pizzaReducers'
 import {
   getAllUsersReducer,
@@ -37,6 +38,7 @@ export default configureStore({
     addPizza: addPizzaReducer,
     getPizzaByID: getPizzaByIDReducer,
     editPizza: editPizzaReducer,
+    deletePizza: deletePizzaReducer,
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
     getAllUsersState: getAllUsersReducer,

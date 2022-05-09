@@ -3,6 +3,9 @@ import {
   ADD_PIZZA_FAIL,
   ADD_PIZZA_REQUEST,
   ADD_PIZZA_SUCCESS,
+  DELETE_PIZZA_FAIL,
+  DELETE_PIZZA_REQUEST,
+  DELETE_PIZZA_SUCCESS,
   EDIT_PIZZA_FAIL,
   EDIT_PIZZA_REQUEST,
   EDIT_PIZZA_SUCCESS,
@@ -31,21 +34,32 @@ export const getAllPizza = () => async (dispatch) => {
   }
 }
 
-export const addPizza = (pizza) => async (dispatch) => {
+export const addPizza = (pizza) => async (dispatch, getState) => {
   dispatch({ type: ADD_PIZZA_REQUEST })
+  const currentUser = getState().userLogin.userInfo
   try {
-    const { data } = await axios.post(`/api/pizzas/addpizza`, pizza)
+    const config = {
+      headers: {
+        Authorization: `Bearer ${currentUser.token}`,
+      },
+    }
+    const { data } = await axios.post(`/api/pizzas/addpizza`, pizza, config)
     dispatch({ type: ADD_PIZZA_SUCCESS, payload: data })
   } catch (error) {
     dispatch({ type: ADD_PIZZA_FAIL, payload: error.message })
   }
 }
 
-export const editPizza = (editedpizza) => async (dispatch) => {
+export const editPizza = (editedpizza) => async (dispatch, getState) => {
+  dispatch({ type: EDIT_PIZZA_REQUEST })
+  const currentUser = getState().userLogin.userInfo
   try {
-    dispatch({ type: EDIT_PIZZA_REQUEST })
-
-    await axios.post('/api/pizzas/editpizza', { editedpizza })
+    const config = {
+      headers: {
+        Authorization: `Bearer ${currentUser.token}`,
+      },
+    }
+    await axios.post('/api/pizzas/editpizza', { editedpizza }, config)
 
     dispatch({ type: EDIT_PIZZA_SUCCESS })
   } catch (error) {
@@ -53,15 +67,16 @@ export const editPizza = (editedpizza) => async (dispatch) => {
   }
 }
 
-export const deletePizza = (pizzaId) => async () => {
+export const deletePizza = (pizzaId) => async (dispatch, getState) => {
+  dispatch({ type: DELETE_PIZZA_REQUEST })
+  const currentUser = getState().userLogin.userInfo
   try {
-    await axios.post('/api/pizzas/deletepizza', { pizzaId })
-
-    alert('Pizza Deleted Successfully!!')
+    const config = { headers: { Authorization: `Bearer ${currentUser.token}` } }
+    await axios.post('/api/pizzas/deletepizza', { pizzaId }, config)
+    dispatch({ type: DELETE_PIZZA_SUCCESS })
     window.location.reload()
   } catch (error) {
-    alert('Something went Wrong')
-    console.log(error)
+    dispatch({ type: DELETE_PIZZA_FAIL, payload: error })
   }
 }
 

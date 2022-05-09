@@ -1,6 +1,9 @@
 import {
   ADD_PIZZA_REQUEST,
   ADD_PIZZA_SUCCESS,
+  DELETE_PIZZA_FAIL,
+  DELETE_PIZZA_REQUEST,
+  DELETE_PIZZA_SUCCESS,
   EDIT_PIZZA_FAIL,
   EDIT_PIZZA_REQUEST,
   EDIT_PIZZA_SUCCESS,
@@ -90,6 +93,27 @@ export const editPizzaReducer = (state = {}, action) => {
       return {
         edit_loading: false,
         edit_success: false,
+      }
+    default:
+      return state
+  }
+}
+
+export const deletePizzaReducer = (state = {}, action) => {
+  switch (action.type) {
+    case DELETE_PIZZA_REQUEST:
+      return {
+        delete_loading: true,
+      }
+    case DELETE_PIZZA_SUCCESS:
+      return {
+        delete_loading: false,
+        delete_success: true,
+      }
+    case DELETE_PIZZA_FAIL:
+      return {
+        edit_loading: false,
+        edit_error: action.payload,
       }
     default:
       return state
