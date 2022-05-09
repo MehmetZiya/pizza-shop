@@ -12,6 +12,7 @@ const Home = () => {
 
   const pizzaListStore = useSelector((state) => state.pizzaList)
   const { loading, error, pizzas } = pizzaListStore
+
   useEffect(() => {
     dispatch(getAllPizza())
   }, [dispatch])

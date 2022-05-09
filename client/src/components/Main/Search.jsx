@@ -25,7 +25,7 @@ const Search = () => {
           <option value='all'>All</option>
           <option value='standard'>Standard</option>
           <option value='special'>Special</option>
-          <option value='vegetarian'>Vegetarien</option>
+          <option value='vegetarian'>Vegetarian</option>
           <option value='italieniska'>Italieniska</option>
         </select>
       </div>

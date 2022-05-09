@@ -12,6 +12,11 @@ import {
   userRegisterReducer,
 } from './reducers/userReducers'
 import { cartReducer } from './reducers/cartReducers'
+import {
+  getAllOrdersReducer,
+  getUserOrdersReducer,
+  placeOrderReducer,
+} from './reducers/orderReducers'
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
   ? JSON.parse(localStorage.getItem('userInfo'))
@@ -36,6 +41,9 @@ export default configureStore({
     userRegister: userRegisterReducer,
     getAllUsersState: getAllUsersReducer,
     cart: cartReducer,
+    getUserOrders: getUserOrdersReducer,
+    getAllOrders: getAllOrdersReducer,
+    placeOrder: placeOrderReducer,
   },
   preloadedState: initialState,
 })

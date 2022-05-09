@@ -4,13 +4,16 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { logoutUser } from '../../actions/userActions'
+import { useNavigate } from 'react-router-dom'
 
 const Navbars = () => {
   const cartState = useSelector((state) => state.cart)
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const logoutHandler = () => {
+    navigate('/')
     dispatch(logoutUser())
   }
   return (
