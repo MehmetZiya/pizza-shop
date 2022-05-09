@@ -16,7 +16,7 @@ const AdminPanel = () => {
   }, [userInfo])
 
   return (
-    <div style={{ marginTop: '200px' }} className='container adminPage'>
+    <div className='container adminPage'>
       <h2 className='text-center'>ADMIN PANEL</h2>
       <hr />
       <ul className='adminLinks'>

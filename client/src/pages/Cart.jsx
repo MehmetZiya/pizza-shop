@@ -8,6 +8,7 @@ import { addToCart, deleteFromCart } from '../actions/cartActions'
 //import Checkout from '../components/Checkout'
 import Message from '../components/Message'
 import { Card, ListGroup } from 'react-bootstrap'
+import Checkout from '../components/Main/Checkout'
 
 const Cart = () => {
   const cartState = useSelector((state) => state.cart)
@@ -92,12 +93,10 @@ const Cart = () => {
                 {subTotal} kr
               </ListGroup.Item>
               <ListGroup.Item className='d-flex justify-content-center'>
-                <button className='btn'>Check Out</button>
+                <Checkout cartItems={cartItems} />
               </ListGroup.Item>
             </ListGroup>
           </Card>
-          {/* 
-          <Checkout subTotal={subTotal} cartItems={cartItems} /> */}
         </div>
       </div>
     </div>
