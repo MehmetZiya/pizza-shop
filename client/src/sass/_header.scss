@@ -40,17 +40,21 @@ header {
     color: $red;
     margin-right: 1rem;
   }
-  .cartItemLength {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    right: 1rem;
-    top: 24px;
-    width: 24px;
-    height: 24px;
-    color: white;
-    background-color: $red;
-    border-radius: 50%;
+  .cartInfo {
+    position: relative;
+
+    .cartItemLength {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      right: 4px;
+      top: -8px;
+      width: 24px;
+      height: 24px;
+      color: white;
+      background-color: $red;
+      border-radius: 50%;
+    }
   }
 }

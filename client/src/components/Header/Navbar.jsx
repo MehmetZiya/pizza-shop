@@ -55,12 +55,14 @@ const Navbars = () => {
           )}
           <LinkContainer to='/cart'>
             <Nav.Link>
-              <BsFillCartFill className='cartIcon' />
-              {cartState.cartItems.length > 0 && (
-                <span className='cartItemLength'>
-                  {cartState.cartItems.length}
-                </span>
-              )}
+              <div className='cartInfo'>
+                <BsFillCartFill className='cartIcon' />
+                {cartState.cartItems.length > 0 && (
+                  <span className='cartItemLength'>
+                    {cartState.cartItems.length}
+                  </span>
+                )}
+              </div>
             </Nav.Link>
           </LinkContainer>
         </Nav>

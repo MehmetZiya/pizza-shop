@@ -4,7 +4,7 @@ import cr2 from '../../assets/carousel/carousel2.png'
 import cr3 from '../../assets/carousel/carousel3.png'
 const HomeCarousel = () => {
   return (
-    <div className='container'>
+    <div className='carouselWrapper'>
       <Carousel controls={false} indicators={false}>
         <Carousel.Item interval={3500}>
           <img src={cr1} alt='First slide' className='d-block w-100' />

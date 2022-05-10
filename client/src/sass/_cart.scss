@@ -5,6 +5,7 @@
   width: 100%;
   h2 {
     color: $red;
+    text-align: center;
   }
   h3 {
     color: $green;
@@ -12,9 +13,8 @@
   .cartItems {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     .cartDetails {
-      min-width: 700px;
       .cartItem {
         display: grid;
         grid-template-columns: 5fr 2fr 1fr;
@@ -46,6 +46,16 @@
     }
     .cartCheckout {
       margin-top: 2rem;
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .cartPage {
+    .cartItems {
+      .cartDetails {
+        min-width: 600px;
+      }
     }
   }
 }
