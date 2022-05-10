@@ -15,7 +15,7 @@ const checkoutOrder = asyncHandler(async (req, res) => {
             product_data: {
               name: item.name,
               images: [
-                `https://valentino-pizza.herokuapp.com/uploads${item.image}`,
+                'https://valentino-pizza.herokuapp.com/uploads' + item.image,
               ],
             },
           },
