@@ -14,7 +14,9 @@ const checkoutOrder = asyncHandler(async (req, res) => {
             unit_amount: item.singleItemPrice * 100,
             product_data: {
               name: item.name,
-              /* images: [item.image], */
+              images: [
+                `https://valentino-pizza.herokuapp.com/uploads${item.image}`,
+              ],
             },
           },
           quantity: item.qty,
