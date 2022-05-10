@@ -6,7 +6,7 @@ const Checkout = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault()
-    fetch('http://localhost:3000/create-checkout-session', {
+    fetch(`${process.env.SERVER_URL}/create-checkout-session`, {
       method: 'POST',
       body: JSON.stringify(cartItems),
       headers: {
