@@ -1,6 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import Stripe from 'stripe'
-import Order from '../models/OrderModel.js'
+import Order from '../models/orderModel.js'
 
 const checkoutOrder = asyncHandler(async (req, res) => {
   const cartItems = req.body
