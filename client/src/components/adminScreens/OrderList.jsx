@@ -19,10 +19,14 @@ const OrderList = () => {
   }, [dispatch])
 
   const handlePrepareOrder = (orderid) => {
-    dispatch(prepareOrder(orderid))
+    if (window.confirm('Är Pizza påväg ?')) {
+      dispatch(prepareOrder(orderid))
+    }
   }
   const handleDeliverOrder = (orderid) => {
-    dispatch(deliverOrder(orderid))
+    if (window.confirm('Är pizza levererad ?')) {
+      dispatch(deliverOrder(orderid))
+    }
   }
   return (
     <div>

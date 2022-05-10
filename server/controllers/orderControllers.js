@@ -4,6 +4,8 @@ import Order from '../models/orderModel.js'
 
 const checkoutOrder = asyncHandler(async (req, res) => {
   const cartItems = req.body
+  const imagesUrl =
+    'https://valentino-pizza.herokuapp.com/uploads' + req.body.imagesUrl
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
     const session = await stripe.checkout.sessions.create({
@@ -14,9 +16,7 @@ const checkoutOrder = asyncHandler(async (req, res) => {
             unit_amount: item.singleItemPrice * 100,
             product_data: {
               name: item.name,
-              images: [
-                'https://valentino-pizza.herokuapp.com/uploads/image-1651921130756.png',
-              ],
+              images: [imagesUrl],
             },
           },
           quantity: item.qty,
