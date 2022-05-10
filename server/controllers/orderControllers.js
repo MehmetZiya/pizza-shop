@@ -26,8 +26,8 @@ const checkoutOrder = asyncHandler(async (req, res) => {
       shipping_address_collection: {
         allowed_countries: ['SE'],
       },
-      success_url: `${SERVER_URL}/success`,
-      cancel_url: `${SERVER_URL}/cancel`,
+      success_url: `${process.env.SERVER_URL}/success`,
+      cancel_url: `${process.env.SERVER_URL}/cancel`,
     })
     console.log(session.payment_status, session.payment_intent)
     res.status(200).json({ url: session.url, session })
