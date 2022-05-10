@@ -70,7 +70,7 @@ const OrderList = () => {
                   </Moment>
                 </td>
                 <td>
-                  {!order.isPrepared ? (
+                  {!order.isPrepared && !order.isDelivered ? (
                     <button
                       className='btn btn-info'
                       onClick={() => handlePrepareOrder(order._id)}

@@ -37,24 +37,20 @@ const Orders = () => {
       <div className=''>
         {loading && <Loader />}
         {error && <Message variant='danger'>{error}</Message>}
+        <table className='table table-striped table-bordered table-responsive-sm'>
+          <thead className='thead-dark'>
+            <tr>
+              <th>No</th>
+              <th>Orders</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
 
-        {orders &&
-          orders.map((order, i) => (
-            <table
-              className='table table-striped table-bordered table-responsive-sm'
-              key={order._id}
-            >
-              <thead className='thead-dark'>
-                <tr>
-                  <th>No</th>
-                  <th>Orders</th>
-                  <th>Amount</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-
-              <tbody>
+          <tbody>
+            {orders &&
+              orders.map((order, i) => (
                 <tr
                   key={order._id}
                   data-aos='fade-down'
@@ -86,9 +82,9 @@ const Orders = () => {
                     )}
                   </td>
                 </tr>
-              </tbody>
-            </table>
-          ))}
+              ))}
+          </tbody>
+        </table>
         {orders && orders.length === 0 && userInfo && (
           <Message variant='danger'>Du har inga beställning</Message>
         )}

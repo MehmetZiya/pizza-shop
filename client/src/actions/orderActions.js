@@ -81,7 +81,7 @@ export const prepareOrder = (orderid) => async (dispatch, getState) => {
       },
     }
     await axios.post('/api/orders/prepareOrder', { orderid }, config)
-    const orders = await axios.get('/api/orders/getAllOrders')
+    const orders = await axios.get('/api/orders/getAllOrders', config)
     dispatch({ type: GET_ALL_ORDERS_SUCCESS, payload: orders.data })
   } catch (error) {
     console.log(error)
@@ -98,8 +98,7 @@ export const deliverOrder = (orderid) => async (dispatch, getState) => {
       },
     }
     await axios.post('/api/orders/deliverOrder', { orderid }, config)
-    alert('Order Delivered')
-    const orders = await axios.get('/api/orders/getAllOrders')
+    const orders = await axios.get('/api/orders/getAllOrders', config)
     dispatch({ type: GET_ALL_ORDERS_SUCCESS, payload: orders.data })
   } catch (error) {
     console.log(error)

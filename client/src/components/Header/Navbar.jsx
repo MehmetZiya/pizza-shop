@@ -17,7 +17,7 @@ const Navbars = () => {
     dispatch(logoutUser())
   }
   return (
-    <Navbar expand='md' collapseOnSelect className='p-2'>
+    <Navbar expand='md' collapseOnSelect className='p-2 navBar'>
       <LinkContainer to='/'>
         <Navbar.Brand className='brand'>
           <img src={logo} alt='logo' />

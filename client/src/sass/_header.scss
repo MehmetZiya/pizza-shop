@@ -4,10 +4,16 @@ header {
   font-family: 'Ultra', sans-serif;
   width: 100%;
   position: fixed;
+  display: flex;
+  justify-content: center;
   top: 0;
   background-color: white;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
   z-index: 999;
+  .navBar {
+    max-width: 1400px;
+    width: 100%;
+  }
   .brand {
     display: flex;
     align-items: center;
