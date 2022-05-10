@@ -6,7 +6,7 @@ const Checkout = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault()
-    fetch(`${process.env.SERVER_URL}/create-checkout-session`, {
+    fetch(`https://valentino-pizza.herokuapp.com/create-checkout-session`, {
       method: 'POST',
       body: JSON.stringify(cartItems),
       headers: {
