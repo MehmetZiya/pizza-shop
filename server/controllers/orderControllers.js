@@ -1,5 +1,4 @@
 import asyncHandler from 'express-async-handler'
-//import { v4 as uuidv4 } from 'uuid'
 import Stripe from 'stripe'
 import Order from '../models/OrderModel.js'
 
@@ -27,8 +26,8 @@ const checkoutOrder = asyncHandler(async (req, res) => {
       shipping_address_collection: {
         allowed_countries: ['SE'],
       },
-      success_url: 'http://localhost:3000/success',
-      cancel_url: `http://localhost:3000/cancel`,
+      success_url: `${SERVER_URL}/success`,
+      cancel_url: `${SERVER_URL}/cancel`,
     })
     console.log(session.payment_status, session.payment_intent)
     res.status(200).json({ url: session.url, session })
