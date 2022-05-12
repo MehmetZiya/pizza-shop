@@ -26,34 +26,36 @@ const Login = () => {
 
   return (
     <div className='loginPage'>
-      {loading && <div>Loading...</div>}
-      {error && <div>Error</div>}
-      <img src={logo} alt='logo' />
-      <form onSubmit={handleLogin}>
-        <input
-          type='email'
-          placeholder='Email address'
-          name='email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type='password'
-          placeholder='Password'
-          name='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          minLength='6'
-          required
-        />
-        <button className='btn' type='submit'>
-          LOGGA IN
-        </button>
-      </form>
-      <p>
-        Don't have an account? <Link to='/register'>Register</Link>
-      </p>
+      <div className='formWrapper'>
+        {loading && <div>Loading...</div>}
+        {error && <div>Error</div>}
+        <img src={logo} alt='logo' />
+        <form onSubmit={handleLogin}>
+          <input
+            type='email'
+            placeholder='Email address'
+            name='email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type='password'
+            placeholder='Password'
+            name='password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            minLength='6'
+            required
+          />
+          <button className='btn' type='submit'>
+            LOGGA IN
+          </button>
+        </form>
+        <p>
+          Don't have an account? <Link to='/register'>Register</Link>
+        </p>
+      </div>
     </div>
   )
 }

@@ -22,20 +22,18 @@ function App() {
     <div className='App'>
       <BrowserRouter>
         <Header />
-        <main>
-          <ScrollToTop>
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Register />} />
-              <Route path='/cart' element={<Cart />} />
-              <Route path='/orders' element={<Orders />} />
-              <Route path='/success' element={<Success />} />
-              <Route path='/cancel' element={<Cancel />} />
-              <Route path='/admin/*' element={<AdminPanel />} />
-            </Routes>
-          </ScrollToTop>
-        </main>
+        <ScrollToTop>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/orders' element={<Orders />} />
+            <Route path='/success' element={<Success />} />
+            <Route path='/cancel' element={<Cancel />} />
+            <Route path='/admin/*' element={<AdminPanel />} />
+          </Routes>
+        </ScrollToTop>
         <Footer />
       </BrowserRouter>
     </div>

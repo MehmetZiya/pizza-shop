@@ -41,6 +41,7 @@ footer {
 }
 @media (min-width: 600px) {
   footer {
+    display: flex;
     .footerInfo {
       font-size: 14px;
     }
