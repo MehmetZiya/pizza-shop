@@ -88,7 +88,22 @@ export const prepareOrder = (orderid) => async (dispatch, getState) => {
     alert('Something went Wrong!!')
   }
 }
-
+export const sendOrder = (orderid) => async (dispatch, getState) => {
+  const currentUser = getState().userLogin.userInfo
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${currentUser.token}`,
+      },
+    }
+    await axios.post('/api/orders/sendOrder', { orderid }, config)
+    const orders = await axios.get('/api/orders/getAllOrders', config)
+    dispatch({ type: GET_ALL_ORDERS_SUCCESS, payload: orders.data })
+  } catch (error) {
+    console.log(error)
+    alert('Something went Wrong!!')
+  }
+}
 export const deliverOrder = (orderid) => async (dispatch, getState) => {
   const currentUser = getState().userLogin.userInfo
   try {

@@ -73,10 +73,18 @@ const Orders = () => {
                     <Moment format='DD/MM/YYYY'>{order.createdAt}</Moment>
                   </td>
                   <td>
-                    {order.isPrepared && !order.isDelivered ? (
-                      <span>Pizza Bakas</span>
-                    ) : order.isDelivered ? (
-                      <span>Pizza Delivered</span>
+                    {order.isPrepared &&
+                    !order.isOnTheWay &&
+                    !order.isDelivered ? (
+                      <span>Bakas</span>
+                    ) : order.isPrepared &&
+                      order.isOnTheWay &&
+                      !order.isDelivered ? (
+                      <span>På väg</span>
+                    ) : order.isPrepared &&
+                      order.isOnTheWay &&
+                      order.isDelivered ? (
+                      <span>Levererad</span>
                     ) : (
                       <span>Din beställning har tagits</span>
                     )}

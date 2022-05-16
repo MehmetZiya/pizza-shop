@@ -105,6 +105,26 @@ const prepareOrder = asyncHandler(async (req, res) => {
   }
 })
 
+// @route  GET api/orders/prepareOrder
+// @desc   Get logged in user orders
+// @access Private Admin
+const sendOrder = asyncHandler(async (req, res) => {
+  try {
+    const orderid = req.body.orderid
+
+    const order = await Order.findById(orderid)
+
+    order.isOnTheWay = true
+
+    await order.save()
+
+    res.json(order)
+  } catch (error) {
+    console.error(error.message)
+    res.status(500).send('Server Error')
+  }
+})
+
 // @route  GET api/orders/deliverOrder
 // @desc   Get logged in user orders
 // @access Private Admin
@@ -130,5 +150,6 @@ export {
   getUserOrders,
   getAllOrders,
   prepareOrder,
+  sendOrder,
   deliverOrder,
 }

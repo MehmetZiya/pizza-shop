@@ -5,6 +5,7 @@ import {
   deliverOrder,
   getAllOrders,
   prepareOrder,
+  sendOrder,
 } from '../../actions/orderActions'
 import Loader from '../../components/Loader'
 import Message from '../../components/Message'
@@ -19,8 +20,13 @@ const OrderList = () => {
   }, [dispatch])
 
   const handlePrepareOrder = (orderid) => {
-    if (window.confirm('Är Pizza påväg ?')) {
+    if (window.confirm('Är Pizza bakad ?')) {
       dispatch(prepareOrder(orderid))
+    }
+  }
+  const handleSendOrder = (orderid) => {
+    if (window.confirm('Är Pizza påväg ?')) {
+      dispatch(sendOrder(orderid))
     }
   }
   const handleDeliverOrder = (orderid) => {
@@ -74,23 +80,36 @@ const OrderList = () => {
                   </Moment>
                 </td>
                 <td>
-                  {!order.isPrepared && !order.isDelivered ? (
+                  {!order.isPrepared &&
+                  !order.isOnTheWay &&
+                  !order.isDelivered ? (
                     <button
                       className='btn btn-info'
                       onClick={() => handlePrepareOrder(order._id)}
                     >
-                      Prepare
+                      Baka
                     </button>
-                  ) : !order.isDelivered && order.isPrepared ? (
+                  ) : order.isPrepared &&
+                    !order.isOnTheWay &&
+                    !order.isDelivered ? (
+                    <button
+                      className='btn btn-info'
+                      onClick={() => handleSendOrder(order._id)}
+                    >
+                      Skicka
+                    </button>
+                  ) : !order.isDelivered &&
+                    order.isOnTheWay &&
+                    order.isPrepared ? (
                     <button
                       className='btn btn-danger'
                       onClick={() => handleDeliverOrder(order._id)}
                     >
-                      Deliver
+                      Levererad
                     </button>
                   ) : (
                     <span style={{ fontWeight: 600, color: 'green' }}>
-                      Delivered <AiFillCheckCircle />
+                      Levererad <AiFillCheckCircle />
                     </span>
                   )}
                 </td>
